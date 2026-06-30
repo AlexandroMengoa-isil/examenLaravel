@@ -23,7 +23,6 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        // Es buena práctica validar que los datos sean correctos antes de guardar
         $request->validate([
             'nombre' => 'required|string|max:100|unique:categorias',
             'descripcion' => 'nullable|string'
@@ -42,7 +41,6 @@ class CategoriaController extends Controller
      */
     public function show(string $id)
     {
-        // Traemos una categoría específica y sus productos asociados
         $categoria = Categoria::with('productos')->find($id);
 
         if (!$categoria) {

@@ -7,7 +7,6 @@ use App\Http\Controllers\Api\CompraController;
 use App\Http\Controllers\Api\MarcaController;
 use App\Http\Controllers\Api\ProveedorController;
 
-// Rutas limpias para tu PA4
 Route::apiResource('categorias', CategoriaController::class);
 Route::apiResource('productos', ProductoController::class);
 Route::apiResource('compras', CompraController::class);
