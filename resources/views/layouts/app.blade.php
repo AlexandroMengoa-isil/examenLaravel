@@ -72,9 +72,42 @@
             </div>
         </nav>
 
+        @auth
+            @if (request()->is('dashboard*') || request()->is('home'))
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+                    <div class="container">
+                        <div class="collapse navbar-collapse show" id="dashboardMenu">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">Dashboard</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{ request()->routeIs('dashboard.categorias') ? 'active' : '' }}" href="{{ route('dashboard.categorias') }}">Categorías</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{ request()->routeIs('dashboard.productos') ? 'active' : '' }}" href="{{ route('dashboard.productos') }}">Productos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{ request()->routeIs('dashboard.compras') ? 'active' : '' }}" href="{{ route('dashboard.compras') }}">Compras</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{ request()->routeIs('dashboard.marcas') ? 'active' : '' }}" href="{{ route('dashboard.marcas') }}">Marcas</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{ request()->routeIs('dashboard.proveedores') ? 'active' : '' }}" href="{{ route('dashboard.proveedores') }}">Proveedores</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            @endif
+        @endauth
+
         <main class="py-4">
             @yield('content')
         </main>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        @yield('scripts')
     </div>
 </body>
 </html>
